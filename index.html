@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Value Assessment Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>AI Value Assessment Tool</h1>
+            <p class="subtitle">Determine if AI adds unique value to your problem</p>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-text" id="progressText">Step 1 of 6</span>
+        </div>
+
+        <main class="main-content">
+            <!-- Start Screen -->
+            <div class="screen active" id="start-screen">
+                <div class="content-card">
+                    <h2>Strategic AI Implementation Assessment</h2>
+                    <p class="description">
+                        Not all problems require AI solutions. This tool helps you identify where AI adds genuine value, 
+                        which type fits best, and where traditional methods might be more effective.
+                    </p>
+                    <div class="info-box">
+                        <h3>What You'll Discover:</h3>
+                        <ul>
+                            <li>Whether your problem benefits from AI</li>
+                            <li>Which type of AI solution is most appropriate</li>
+                            <li>If automation or augmentation is the better approach</li>
+                            <li>Potential risks and organizational readiness factors</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary" onclick="startAssessment()">Begin Assessment</button>
+                </div>
+            </div>
+
+            <!-- Question 1 -->
+            <div class="screen" id="q1-screen">
+                <div class="content-card">
+                    <h2>Question 1: Problem Characteristics</h2>
+                    <p class="question">Does your problem involve analyzing large amounts of data, identifying patterns, or handling repetitive tasks?</p>
+                    
+                    <div class="tooltip-box">
+                        <h4>Examples of AI-suitable problems:</h4>
+                        <ul>
+                            <li><strong>Large data analysis:</strong> Processing thousands of customer reviews, financial transactions, or sensor readings</li>
+                            <li><strong>Pattern identification:</strong> Detecting fraud, predicting equipment failures, or recognizing images</li>
+                            <li><strong>Repetitive tasks:</strong> Data entry, email classification, or routine customer inquiries</li>
+                        </ul>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="answerQuestion('q1', 'yes')">Yes</button>
+                        <button class="btn btn-secondary" onclick="answerQuestion('q1', 'no')">No</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="screen" id="q2-screen">
+                <div class="content-card">
+                    <h2>Question 2: Traditional Solutions</h2>
+                    <p class="question">Can traditional methods (e.g., rule-based systems, manual processes, simple automation) solve your problem effectively?</p>
+                    
+                    <div class="tooltip-box">
+                        <h4>Traditional methods include:</h4>
+                        <ul>
+                            <li><strong>Rule-based systems:</strong> If-then logic, decision tables, workflow automation</li>
+                            <li><strong>Manual processes:</strong> Human expertise, established procedures</li>
+                            <li><strong>Simple automation:</strong> Scheduled tasks, basic data processing scripts</li>
+                        </ul>
+                        <p><em>Consider: Is the problem well-defined with clear rules, or does it require learning and adaptation?</em></p>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="answerQuestion('q2', 'yes')">Yes, traditional methods work well</button>
+                        <button class="btn btn-secondary" onclick="answerQuestion('q2', 'no')">No, traditional methods are insufficient</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="screen" id="q3-screen">
+                <div class="content-card">
+                    <h2>Question 3: Problem Scope</h2>
+                    <p class="question">Is your problem specific and well-defined, or broad and complex?</p>
+                    
+                    <div class="tooltip-box">
+                        <h4>Problem types:</h4>
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h5>Specific & Well-defined</h5>
+                                <ul>
+                                    <li>Image recognition</li>
+                                    <li>Fraud detection</li>
+                                    <li>Predictive maintenance</li>
+                                    <li>Speech-to-text</li>
+                                </ul>
+                            </div>
+                            <div class="comparison-item">
+                                <h5>Broad & Complex</h5>
+                                <ul>
+                                    <li>Strategic decision-making</li>
+                                    <li>Content generation</li>
+                                    <li>Creative problem-solving</li>
+                                    <li>Multi-domain analysis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="answerQuestion('q3', 'specific')">Specific & Well-defined</button>
+                        <button class="btn btn-secondary" onclick="answerQuestion('q3', 'broad')">Broad & Complex</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="screen" id="q4-screen">
+                <div class="content-card">
+                    <h2>Question 4: Human Involvement</h2>
+                    <p class="question">Would automating the entire task be more efficient, or is human oversight still valuable?</p>
+                    
+                    <div class="tooltip-box">
+                        <h4>Consider these factors:</h4>
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h5>Full Automation</h5>
+                                <ul>
+                                    <li>High-volume, routine tasks</li>
+                                    <li>Well-defined success criteria</li>
+                                    <li>Low risk of errors</li>
+                                    <li>24/7 operation needed</li>
+                                </ul>
+                                <p><em>Examples: Chatbots, automated data entry, spam filtering</em></p>
+                            </div>
+                            <div class="comparison-item">
+                                <h5>Human Augmentation</h5>
+                                <ul>
+                                    <li>Complex decision-making</li>
+                                    <li>Creative or strategic tasks</li>
+                                    <li>High-stakes outcomes</li>
+                                    <li>Need for explanation/accountability</li>
+                                </ul>
+                                <p><em>Examples: AI-assisted diagnosis, investment recommendations, content creation</em></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="answerQuestion('q4', 'automation')">Full Automation</button>
+                        <button class="btn btn-secondary" onclick="answerQuestion('q4', 'augmentation')">Human Augmentation</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="screen" id="q5-screen">
+                <div class="content-card">
+                    <h2>Question 5: Risk Assessment</h2>
+                    <p class="question">Are there significant ethical, privacy, or transparency concerns with your use case?</p>
+                    
+                    <div class="tooltip-box">
+                        <h4>Key concerns to evaluate:</h4>
+                        <ul>
+                            <li><strong>Data sensitivity:</strong> Personal information, financial data, health records</li>
+                            <li><strong>Potential bias:</strong> Unfair treatment of certain groups or demographics</li>
+                            <li><strong>Transparency needs:</strong> Ability to explain AI decisions to stakeholders</li>
+                            <li><strong>Regulatory compliance:</strong> GDPR, HIPAA, industry-specific regulations</li>
+                            <li><strong>Reputational risk:</strong> Impact of AI errors on brand and trust</li>
+                        </ul>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="answerQuestion('q5', 'yes')">Yes, significant concerns exist</button>
+                        <button class="btn btn-secondary" onclick="answerQuestion('q5', 'no')">No, minimal concerns</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="screen" id="q6-screen">
+                <div class="content-card">
+                    <h2>Question 6: Organizational Readiness</h2>
+                    <p class="question">Does your organization have the necessary data infrastructure and skilled personnel to implement AI?</p>
+                    
+                    <div class="tooltip-box">
+                        <h4>Readiness checklist:</h4>
+                        <div class="checklist-grid">
+                            <div class="checklist-item">
+                                <h5>Data Infrastructure</h5>
+                                <ul>
+                                    <li>Quality, accessible data</li>
+                                    <li>Data governance processes</li>
+                                    <li>Scalable storage and computing</li>
+                                    <li>Integration capabilities</li>
+                                </ul>
+                            </div>
+                            <div class="checklist-item">
+                                <h5>Human Resources</h5>
+                                <ul>
+                                    <li>AI/ML expertise (internal or external)</li>
+                                    <li>Data science capabilities</li>
+                                    <li>Change management support</li>
+                                    <li>Executive sponsorship</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="answerQuestion('q6', 'yes')">Yes, we have the necessary resources</button>
+                        <button class="btn btn-secondary" onclick="answerQuestion('q6', 'no')">No, we need to build readiness first</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Screens -->
+            <div class="screen result-screen" id="result-no-ai">
+                <div class="content-card result-card">
+                    <div class="result-icon">❌</div>
+                    <h2>AI Not Recommended</h2>
+                    <p class="result-description">Your problem may not require AI. Consider simpler, more cost-effective solutions.</p>
+                    
+                    <div class="recommendation-box">
+                        <h3>Recommended Actions:</h3>
+                        <ul>
+                            <li>Evaluate manual processes or simple automation</li>
+                            <li>Consider rule-based systems or workflow tools</li>
+                            <li>Focus on process optimization before technology</li>
+                            <li>Reassess if problem characteristics change significantly</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-study">
+                        <h4>Case Study:</h4>
+                        <p>A small business wanted AI for appointment scheduling, but a simple booking system with automated reminders solved their needs more efficiently and cost-effectively.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screen result-screen" id="result-traditional">
+                <div class="content-card result-card">
+                    <div class="result-icon">⚙️</div>
+                    <h2>Traditional Methods Recommended</h2>
+                    <p class="result-description">AI may not add unique value. Stick with proven traditional methods.</p>
+                    
+                    <div class="recommendation-box">
+                        <h3>Recommended Actions:</h3>
+                        <ul>
+                            <li>Optimize existing rule-based systems</li>
+                            <li>Improve manual processes and training</li>
+                            <li>Consider simple automation tools</li>
+                            <li>Monitor for changes that might justify AI later</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-study">
+                        <h4>Case Study:</h4>
+                        <p>A company considered AI for invoice processing, but implementing a structured workflow with OCR and validation rules provided 90% of the benefits at 20% of the cost.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screen result-screen" id="result-narrow-ai">
+                <div class="content-card result-card">
+                    <div class="result-icon">🎯</div>
+                    <h2>Narrow AI Recommended</h2>
+                    <p class="result-description">Use specialized AI for your targeted, well-defined problem.</p>
+                    
+                    <div class="recommendation-box">
+                        <h3>Recommended Actions:</h3>
+                        <ul>
+                            <li>Identify specific AI models for your use case</li>
+                            <li>Start with pre-trained models or APIs</li>
+                            <li>Focus on data quality and model validation</li>
+                            <li>Plan for model monitoring and maintenance</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-study">
+                        <h4>Case Study:</h4>
+                        <p>A manufacturing company implemented computer vision AI for quality control, reducing defect rates by 85% and inspection time by 70% compared to manual processes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screen result-screen" id="result-genai">
+                <div class="content-card result-card">
+                    <div class="result-icon">🧠</div>
+                    <h2>Generative AI Recommended</h2>
+                    <p class="result-description">Consider GenAI for complex, multi-faceted problems requiring creativity and adaptability.</p>
+                    
+                    <div class="recommendation-box">
+                        <h3>Recommended Actions:</h3>
+                        <ul>
+                            <li>Explore large language models or multimodal AI</li>
+                            <li>Start with pilot projects to test effectiveness</li>
+                            <li>Develop prompt engineering capabilities</li>
+                            <li>Plan for content quality control and human oversight</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-study">
+                        <h4>Case Study:</h4>
+                        <p>A marketing agency used GenAI to create personalized content across multiple channels, increasing engagement by 40% while reducing content creation time by 60%.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screen result-screen" id="result-automation">
+                <div class="content-card result-card">
+                    <div class="result-icon">🤖</div>
+                    <h2>AI Automation Recommended</h2>
+                    <p class="result-description">Implement AI for full task automation to maximize efficiency.</p>
+                    
+                    <div class="recommendation-box">
+                        <h3>Recommended Actions:</h3>
+                        <ul>
+                            <li>Design end-to-end automated workflows</li>
+                            <li>Implement robust error handling and monitoring</li>
+                            <li>Plan for edge cases and fallback procedures</li>
+                            <li>Ensure scalability and performance optimization</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-study">
+                        <h4>Case Study:</h4>
+                        <p>A financial services company automated loan application processing with AI, reducing processing time from days to minutes while maintaining 99.5% accuracy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screen result-screen" id="result-augmentation">
+                <div class="content-card result-card">
+                    <div class="result-icon">🤝</div>
+                    <h2>AI Augmentation Recommended</h2>
+                    <p class="result-description">Use AI to enhance human capabilities while maintaining oversight and control.</p>
+                    
+                    <div class="recommendation-box">
+                        <h3>Recommended Actions:</h3>
+                        <ul>
+                            <li>Design human-AI collaboration workflows</li>
+                            <li>Provide AI literacy training for users</li>
+                            <li>Implement explainable AI features</li>
+                            <li>Establish clear human override protocols</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-study">
+                        <h4>Case Study:</h4>
+                        <p>A hospital implemented AI-assisted radiology, where AI highlights potential issues for radiologists to review, improving diagnostic accuracy by 25% while reducing review time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screen result-screen" id="result-address-concerns">
+                <div class="content-card result-card">
+                    <div class="result-icon">⚠️</div>
+                    <h2>Address Concerns First</h2>
+                    <p class="result-description">Ethical, privacy, or transparency concerns must be resolved before AI implementation.</p>
+                    
+                    <div class="recommendation-box">
+                        <h3>Recommended Actions:</h3>
+                        <ul>
+                            <li>Conduct thorough risk assessment and mitigation planning</li>
+                            <li>Develop AI governance and ethics frameworks</li>
+                            <li>Ensure regulatory compliance and legal review</li>
+                            <li>Implement bias testing and fairness measures</li>
+                            <li>Create transparency and explainability protocols</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-study">
+                        <h4>Case Study:</h4>
+                        <p>A hiring platform delayed AI implementation to address bias concerns, ultimately creating a more fair and legally compliant system that improved diversity hiring by 30%.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screen result-screen" id="result-build-readiness">
+                <div class="content-card result-card">
+                    <div class="result-icon">🏗️</div>
+                    <h2>Build Organizational Readiness</h2>
+                    <p class="result-description">Develop necessary infrastructure and capabilities before implementing AI.</p>
+                    
+                    <div class="recommendation-box">
+                        <h3>Recommended Actions:</h3>
+                        <ul>
+                            <li>Invest in data infrastructure and governance</li>
+                            <li>Hire or train AI/ML talent</li>
+                            <li>Establish data science and analytics capabilities</li>
+                            <li>Create change management and training programs</li>
+                            <li>Start with smaller pilot projects to build experience</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-study">
+                        <h4>Case Study:</h4>
+                        <p>A retail company spent 18 months building data infrastructure and training teams before implementing AI for demand forecasting, resulting in a highly successful deployment with 20% inventory cost reduction.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screen result-screen" id="result-proceed">
+                <div class="content-card result-card">
+                    <div class="result-icon">✅</div>
+                    <h2>AI Implementation Recommended</h2>
+                    <p class="result-description">AI is likely to add significant value. Proceed with implementation planning.</p>
+                    
+                    <div class="recommendation-box">
+                        <h3>Recommended Actions:</h3>
+                        <ul>
+                            <li>Develop detailed implementation roadmap</li>
+                            <li>Define success metrics and KPIs</li>
+                            <li>Plan pilot project with clear scope</li>
+                            <li>Establish monitoring and evaluation processes</li>
+                            <li>Prepare for scaling and continuous improvement</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-study">
+                        <h4>Case Study:</h4>
+                        <p>An e-commerce company successfully implemented AI-powered recommendation systems, increasing sales by 35% and customer satisfaction scores by 25% within six months.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="navigation">
+            <button class="btn btn-outline" id="backBtn" onclick="goBack()" style="display: none;">← Back</button>
+            <button class="btn btn-outline" id="restartBtn" onclick="restart()">Restart Assessment</button>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2024 AI Value Assessment Tool. Designed to help organizations make informed AI implementation decisions.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
