@@ -4,7 +4,7 @@ class DecisionTree {
         this.currentStep = 'start';
         this.answers = {};
         this.history = [];
-        this.totalSteps = 6;
+        this.totalSteps = 7; // Updated to 7 steps
         this.init();
     }
 
@@ -42,6 +42,10 @@ class DecisionTree {
         const flowMap = {
             'q1': {
                 'yes': 'q2',
+                'no': 'q1_5'
+            },
+            'q1_5': {
+                'yes': 'result-genai-direct',
                 'no': 'result-no-ai'
             },
             'q2': {
@@ -50,7 +54,7 @@ class DecisionTree {
             },
             'q3': {
                 'specific': 'result-narrow-ai',
-                'broad': 'q4'
+                'broad': 'result-genai-complex'
             },
             'q4': {
                 'automation': 'q5',
@@ -148,9 +152,14 @@ class DecisionTree {
             progressPercentage = 100;
         } else {
             // Extract question number
-            const questionMatch = this.currentStep.match(/q(\d+)/);
+            const questionMatch = this.currentStep.match(/q(\d+(\_\d+)?)/);
             if (questionMatch) {
-                currentStepNumber = parseInt(questionMatch[1]);
+                const questionId = questionMatch[1];
+                if (questionId === '1_5') {
+                    currentStepNumber = 2;
+                } else {
+                    currentStepNumber = parseInt(questionId);
+                }
                 progressPercentage = (currentStepNumber / this.totalSteps) * 100;
             }
         }
@@ -363,4 +372,3 @@ document.addEventListener('DOMContentLoaded', function() {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { DecisionTree };
 }
-
