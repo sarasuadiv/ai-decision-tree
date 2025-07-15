@@ -18,7 +18,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
-            <span class="progress-text" id="progressText">Step 1 of 6</span>
+            <span class="progress-text" id="progressText">Step 1 of 7</span>
         </div>
 
         <main class="main-content">
@@ -33,10 +33,10 @@
                     <div class="info-box">
                         <h3>What You'll Discover:</h3>
                         <ul>
-                            <li>Whether your problem benefits from AI</li>
-                            <li>Which type of AI solution is most appropriate</li>
+                            <li>Whether your problem truly benefits from AI</li>
+                            <li>Which type of AI solution (Narrow AI, Generative AI) is most appropriate</li>
                             <li>If automation or augmentation is the better approach</li>
-                            <li>Potential risks and organizational readiness factors</li>
+                            <li>Potential risks and essential organizational readiness factors</li>
                         </ul>
                     </div>
                     <button class="btn btn-primary" onclick="startAssessment()">Begin Assessment</button>
@@ -47,20 +47,44 @@
             <div class="screen" id="q1-screen">
                 <div class="content-card">
                     <h2>Question 1: Problem Characteristics</h2>
-                    <p class="question">Does your problem involve analyzing large amounts of data, identifying patterns, or handling repetitive tasks?</p>
+                    <p class="question">Does your problem primarily involve analyzing large datasets, identifying patterns, or automating repetitive tasks?</p>
                     
                     <div class="tooltip-box">
-                        <h4>Examples of AI-suitable problems:</h4>
+                        <h4>Examples of problems often suited for traditional AI/ML:</h4>
                         <ul>
-                            <li><strong>Large data analysis:</strong> Processing thousands of customer reviews, financial transactions, or sensor readings</li>
-                            <li><strong>Pattern identification:</strong> Detecting fraud, predicting equipment failures, or recognizing images</li>
-                            <li><strong>Repetitive tasks:</strong> Data entry, email classification, or routine customer inquiries</li>
+                            <li><strong>Large data analysis:</strong> Processing thousands of customer reviews, financial transactions, or sensor readings to extract insights.</li>
+                            <li><strong>Pattern identification:</strong> Detecting fraud, predicting equipment failures, or recognizing objects in images/videos.</li>
+                            <li><strong>Repetitive tasks:</strong> Automating data entry, email classification, or routine customer service inquiries.</li>
                         </ul>
+                        <p><em>This question focuses on problems where AI learns from existing data to make predictions or classifications.</em></p>
                     </div>
 
                     <div class="button-group">
-                        <button class="btn btn-secondary" onclick="answerQuestion('q1', 'yes')">Yes</button>
-                        <button class="btn btn-secondary" onclick="answerQuestion('q1', 'no')">No</button>
+                        <button class="btn btn-secondary" onclick="answerQuestion('q1', 'yes')">Yes, primarily these</button>
+                        <button class="btn btn-secondary" onclick="answerQuestion('q1', 'no')">No, not primarily these</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Question 1.5 -->
+            <div class="screen" id="q1_5-screen">
+                <div class="content-card">
+                    <h2>Question 1.5: Generative Capabilities</h2>
+                    <p class="question">Does your problem require generating novel content (text, images, code), synthesizing complex information, or advanced reasoning/problem-solving?</p>
+                    
+                    <div class="tooltip-box">
+                        <h4>Examples of problems suited for Generative AI:</h4>
+                        <ul>
+                            <li><strong>Content generation:</strong> Drafting marketing copy, writing code, creating images or music from descriptions.</li>
+                            <li><strong>Information synthesis:</strong> Summarizing long documents, extracting key insights from unstructured text, answering complex questions.</li>
+                            <li><strong>Advanced reasoning:</strong> Strategic decision support, creative problem-solving, simulating complex scenarios.</li>
+                        </ul>
+                        <p><em>This question focuses on problems where AI creates new outputs or performs human-like reasoning.</em></p>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="answerQuestion('q1_5', 'yes')">Yes, requires generative capabilities</button>
+                        <button class="btn btn-secondary" onclick="answerQuestion('q1_5', 'no')">No, not these</button>
                     </div>
                 </div>
             </div>
@@ -68,17 +92,17 @@
             <!-- Question 2 -->
             <div class="screen" id="q2-screen">
                 <div class="content-card">
-                    <h2>Question 2: Traditional Solutions</h2>
-                    <p class="question">Can traditional methods (e.g., rule-based systems, manual processes, simple automation) solve your problem effectively?</p>
+                    <h2>Question 2: Traditional Solutions Effectiveness</h2>
+                    <p class="question">Can traditional methods (e.g., rule-based systems, manual processes, simple automation) solve your problem effectively and efficiently?</p>
                     
                     <div class="tooltip-box">
                         <h4>Traditional methods include:</h4>
                         <ul>
-                            <li><strong>Rule-based systems:</strong> If-then logic, decision tables, workflow automation</li>
-                            <li><strong>Manual processes:</strong> Human expertise, established procedures</li>
-                            <li><strong>Simple automation:</strong> Scheduled tasks, basic data processing scripts</li>
+                            <li><strong>Rule-based systems:</strong> If-then logic, decision tables, workflow automation.</li>
+                            <li><strong>Manual processes:</strong> Human expertise, established procedures, and direct human labor.</li>
+                            <li><strong>Simple automation:</strong> Basic scripting, scheduled tasks, or off-the-shelf software solutions.</li>
                         </ul>
-                        <p><em>Consider: Is the problem well-defined with clear rules, or does it require learning and adaptation?</em></p>
+                        <p><em>Consider: Is the problem well-defined with clear, stable rules, or does it require learning, adaptation, or handling ambiguity?</em></p>
                     </div>
 
                     <div class="button-group">
@@ -91,29 +115,31 @@
             <!-- Question 3 -->
             <div class="screen" id="q3-screen">
                 <div class="content-card">
-                    <h2>Question 3: Problem Scope</h2>
-                    <p class="question">Is your problem specific and well-defined, or broad and complex?</p>
+                    <h2>Question 3: Problem Scope & AI Type</h2>
+                    <p class="question">Is your problem specific and well-defined (e.g., image recognition), or broad and complex (e.g., strategic decision-making)?</p>
                     
                     <div class="tooltip-box">
-                        <h4>Problem types:</h4>
+                        <h4>Problem types and corresponding AI focus:</h4>
                         <div class="comparison-grid">
                             <div class="comparison-item">
-                                <h5>Specific & Well-defined</h5>
+                                <h5>Specific & Well-defined (Narrow AI)</h5>
                                 <ul>
-                                    <li>Image recognition</li>
-                                    <li>Fraud detection</li>
-                                    <li>Predictive maintenance</li>
+                                    <li>Image recognition for specific objects</li>
+                                    <li>Fraud detection in financial transactions</li>
+                                    <li>Predictive maintenance for a single machine type</li>
                                     <li>Speech-to-text</li>
                                 </ul>
+                                <p><em>Best suited for highly specialized AI models.</em></p>
                             </div>
                             <div class="comparison-item">
-                                <h5>Broad & Complex</h5>
+                                <h5>Broad & Complex (Generative AI)</h5>
                                 <ul>
-                                    <li>Strategic decision-making</li>
-                                    <li>Content generation</li>
-                                    <li>Creative problem-solving</li>
-                                    <li>Multi-domain analysis</li>
+                                    <li>Strategic decision-making support</li>
+                                    <li>Creative content generation (e.g., marketing campaigns)</li>
+                                    <li>Multi-domain analysis and synthesis</li>
+                                    <li>Complex problem-solving with ambiguous inputs</li>
                                 </ul>
+                                <p><em>Often requires more flexible and adaptable AI models.</em></p>
                             </div>
                         </div>
                     </div>
@@ -128,31 +154,31 @@
             <!-- Question 4 -->
             <div class="screen" id="q4-screen">
                 <div class="content-card">
-                    <h2>Question 4: Human Involvement</h2>
-                    <p class="question">Would automating the entire task be more efficient, or is human oversight still valuable?</p>
+                    <h2>Question 4: Human-AI Collaboration</h2>
+                    <p class="question">Would automating the entire task be more efficient, or is human oversight and collaboration still valuable?</p>
                     
                     <div class="tooltip-box">
-                        <h4>Consider these factors:</h4>
+                        <h4>Consider these factors for automation vs. augmentation:</h4>
                         <div class="comparison-grid">
                             <div class="comparison-item">
                                 <h5>Full Automation</h5>
                                 <ul>
-                                    <li>High-volume, routine tasks</li>
-                                    <li>Well-defined success criteria</li>
-                                    <li>Low risk of errors</li>
-                                    <li>24/7 operation needed</li>
+                                    <li>High-volume, highly repetitive tasks</li>
+                                    <li>Well-defined success criteria with minimal exceptions</li>
+                                    <li>Low risk of errors or critical consequences</li>
+                                    <li>24/7 operation or extreme speed needed</li>
                                 </ul>
-                                <p><em>Examples: Chatbots, automated data entry, spam filtering</em></p>
+                                <p><em>Examples: Chatbots for FAQs, automated data entry, spam filtering.</em></p>
                             </div>
                             <div class="comparison-item">
                                 <h5>Human Augmentation</h5>
                                 <ul>
-                                    <li>Complex decision-making</li>
-                                    <li>Creative or strategic tasks</li>
-                                    <li>High-stakes outcomes</li>
-                                    <li>Need for explanation/accountability</li>
+                                    <li>Complex decision-making with nuanced factors</li>
+                                    <li>Creative, strategic, or highly sensitive tasks</li>
+                                    <li>High-stakes outcomes requiring human accountability</li>
+                                    <li>Need for human judgment, empathy, or ethical review</li>
                                 </ul>
-                                <p><em>Examples: AI-assisted diagnosis, investment recommendations, content creation</em></p>
+                                <p><em>Examples: AI-assisted medical diagnosis, legal research, content creation with human editors.</em></p>
                             </div>
                         </div>
                     </div>
@@ -167,17 +193,17 @@
             <!-- Question 5 -->
             <div class="screen" id="q5-screen">
                 <div class="content-card">
-                    <h2>Question 5: Risk Assessment</h2>
-                    <p class="question">Are there significant ethical, privacy, or transparency concerns with your use case?</p>
+                    <h2>Question 5: Ethical & Risk Considerations</h2>
+                    <p class="question">Are there significant ethical, privacy, or transparency concerns with your proposed AI use case?</p>
                     
                     <div class="tooltip-box">
                         <h4>Key concerns to evaluate:</h4>
                         <ul>
-                            <li><strong>Data sensitivity:</strong> Personal information, financial data, health records</li>
-                            <li><strong>Potential bias:</strong> Unfair treatment of certain groups or demographics</li>
-                            <li><strong>Transparency needs:</strong> Ability to explain AI decisions to stakeholders</li>
-                            <li><strong>Regulatory compliance:</strong> GDPR, HIPAA, industry-specific regulations</li>
-                            <li><strong>Reputational risk:</strong> Impact of AI errors on brand and trust</li>
+                            <li><strong>Data sensitivity:</strong> Handling personal, financial, or health information.</li>
+                            <li><strong>Potential bias:</strong> Risk of unfair or discriminatory outcomes for certain groups.</li>
+                            <li><strong>Transparency needs:</strong> Requirement to explain AI decisions to users or regulators.</li>
+                            <li><strong>Regulatory compliance:</strong> Adherence to laws like GDPR, HIPAA, or industry-specific regulations.</li>
+                            <li><strong>Reputational risk:</strong> Potential negative impact on brand and trust from AI errors or misuse.</li>
                         </ul>
                     </div>
 
@@ -192,35 +218,34 @@
             <div class="screen" id="q6-screen">
                 <div class="content-card">
                     <h2>Question 6: Organizational Readiness</h2>
-                    <p class="question">Does your organization have the necessary data infrastructure and skilled personnel to implement AI?</p>
+                    <p class="question">Does your organization have the necessary data infrastructure, skilled personnel, and leadership support to implement AI successfully?</p>
                     
                     <div class="tooltip-box">
                         <h4>Readiness checklist:</h4>
                         <div class="checklist-grid">
                             <div class="checklist-item">
-                                <h5>Data Infrastructure</h5>
+                                <h5>Data Infrastructure & Governance</h5>
                                 <ul>
-                                    <li>Quality, accessible data</li>
-                                    <li>Data governance processes</li>
-                                    <li>Scalable storage and computing</li>
-                                    <li>Integration capabilities</li>
+                                    <li>High-quality, accessible, and well-governed data.</li>
+                                    <li>Scalable storage, computing, and integration capabilities.</li>
+                                    <li>Robust data pipelines and security measures.</li>
                                 </ul>
                             </div>
                             <div class="checklist-item">
-                                <h5>Human Resources</h5>
+                                <h5>Human Resources & Leadership</h5>
                                 <ul>
-                                    <li>AI/ML expertise (internal or external)</li>
-                                    <li>Data science capabilities</li>
-                                    <li>Change management support</li>
-                                    <li>Executive sponsorship</li>
+                                    <li>AI/ML expertise (internal or external).</li>
+                                    <li>Data science and engineering capabilities.</li>
+                                    <li>Strong executive sponsorship and change management support.</li>
+                                    <li>Cross-functional collaboration and AI literacy.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
 
                     <div class="button-group">
-                        <button class="btn btn-secondary" onclick="answerQuestion('q6', 'yes')">Yes, we have the necessary resources</button>
-                        <button class="btn btn-secondary" onclick="answerQuestion('q6', 'no')">No, we need to build readiness first</button>
+                        <button class="btn btn-secondary" onclick="answerQuestion('q6', 'yes')">Yes, we are ready</button>
+                        <button class="btn btn-secondary" onclick="answerQuestion('q6', 'no')">No, we need to build readiness</button>
                     </div>
                 </div>
             </div>
@@ -230,21 +255,21 @@
                 <div class="content-card result-card">
                     <div class="result-icon">❌</div>
                     <h2>AI Not Recommended</h2>
-                    <p class="result-description">Your problem may not require AI. Consider simpler, more cost-effective solutions.</p>
+                    <p class="result-description">Your problem may not require AI. Consider simpler, more cost-effective, and less complex solutions.</p>
                     
                     <div class="recommendation-box">
                         <h3>Recommended Actions:</h3>
                         <ul>
-                            <li>Evaluate manual processes or simple automation</li>
-                            <li>Consider rule-based systems or workflow tools</li>
-                            <li>Focus on process optimization before technology</li>
-                            <li>Reassess if problem characteristics change significantly</li>
+                            <li>Evaluate and optimize existing manual processes or simple automation.</li>
+                            <li>Consider rule-based systems, workflow automation tools, or off-the-shelf software.</li>
+                            <li>Focus on process re-engineering and efficiency improvements before technology.</li>
+                            <li>**Revisit this assessment periodically** as your problem evolves or AI capabilities advance.</li>
                         </ul>
                     </div>
 
                     <div class="case-study">
                         <h4>Case Study:</h4>
-                        <p>A small business wanted AI for appointment scheduling, but a simple booking system with automated reminders solved their needs more efficiently and cost-effectively.</p>
+                        <p>A small business wanted AI for appointment scheduling, but a simple, well-integrated online booking system with automated reminders solved their needs more efficiently and cost-effectively, without the overhead of AI development.</p>
                     </div>
                 </div>
             </div>
@@ -253,21 +278,21 @@
                 <div class="content-card result-card">
                     <div class="result-icon">⚙️</div>
                     <h2>Traditional Methods Recommended</h2>
-                    <p class="result-description">AI may not add unique value. Stick with proven traditional methods.</p>
+                    <p class="result-description">AI may not add unique value beyond what traditional methods can provide effectively and efficiently.</p>
                     
                     <div class="recommendation-box">
                         <h3>Recommended Actions:</h3>
                         <ul>
-                            <li>Optimize existing rule-based systems</li>
-                            <li>Improve manual processes and training</li>
-                            <li>Consider simple automation tools</li>
-                            <li>Monitor for changes that might justify AI later</li>
+                            <li>Optimize and refine your existing rule-based systems or manual processes.</li>
+                            <li>Invest in improving current workflows and training for human operators.</li>
+                            <li>Explore advanced features of non-AI software solutions or simple automation tools.</li>
+                            <li>**Monitor for significant changes** in problem complexity or data volume that might justify AI later.</li>
                         </ul>
                     </div>
 
                     <div class="case-study">
                         <h4>Case Study:</h4>
-                        <p>A company considered AI for invoice processing, but implementing a structured workflow with OCR and validation rules provided 90% of the benefits at 20% of the cost.</p>
+                        <p>A company considered AI for invoice processing, but implementing a structured workflow with Optical Character Recognition (OCR) and robust validation rules provided 90% of the benefits at a fraction of the cost and complexity of an AI solution.</p>
                     </div>
                 </div>
             </div>
@@ -276,44 +301,67 @@
                 <div class="content-card result-card">
                     <div class="result-icon">🎯</div>
                     <h2>Narrow AI Recommended</h2>
-                    <p class="result-description">Use specialized AI for your targeted, well-defined problem.</p>
+                    <p class="result-description">Your problem is well-suited for specialized Narrow AI solutions that excel in specific, well-defined tasks.</p>
                     
                     <div class="recommendation-box">
                         <h3>Recommended Actions:</h3>
                         <ul>
-                            <li>Identify specific AI models for your use case</li>
-                            <li>Start with pre-trained models or APIs</li>
-                            <li>Focus on data quality and model validation</li>
-                            <li>Plan for model monitoring and maintenance</li>
+                            <li>Identify specific AI models or pre-trained APIs tailored to your use case (e.g., computer vision, specific NLP tasks).</li>
+                            <li>**Start with a focused pilot project** to validate the AI's effectiveness and gather initial insights.</li>
+                            <li>Prioritize data quality, model validation, and clear performance metrics.</li>
+                            <li>Plan for continuous model monitoring, maintenance, and potential retraining.</li>
                         </ul>
                     </div>
 
                     <div class="case-study">
                         <h4>Case Study:</h4>
-                        <p>A manufacturing company implemented computer vision AI for quality control, reducing defect rates by 85% and inspection time by 70% compared to manual processes.</p>
+                        <p>A manufacturing company implemented computer vision AI for quality control on an assembly line, reducing defect rates by 85% and inspection time by 70% compared to manual processes, demonstrating clear ROI for a targeted AI application.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="screen result-screen" id="result-genai">
+            <div class="screen result-screen" id="result-genai-direct">
                 <div class="content-card result-card">
-                    <div class="result-icon">🧠</div>
-                    <h2>Generative AI Recommended</h2>
-                    <p class="result-description">Consider GenAI for complex, multi-faceted problems requiring creativity and adaptability.</p>
+                    <div class="result-icon">✨</div>
+                    <h2>Generative AI for Core Value</h2>
+                    <p class="result-description">Your problem aligns directly with the core strengths of Generative AI, offering unique value through creation, synthesis, or advanced reasoning.</p>
                     
                     <div class="recommendation-box">
                         <h3>Recommended Actions:</h3>
                         <ul>
-                            <li>Explore large language models or multimodal AI</li>
-                            <li>Start with pilot projects to test effectiveness</li>
-                            <li>Develop prompt engineering capabilities</li>
-                            <li>Plan for content quality control and human oversight</li>
+                            <li>Explore Large Language Models (LLMs) or multimodal GenAI models relevant to your creative or complex problem.</li>
+                            <li>**Initiate a focused pilot project** to test the feasibility and impact of GenAI on your specific use case.</li>
+                            <li>Develop strong prompt engineering capabilities and strategies for output validation.</li>
+                            <li>Plan for human oversight and ethical guidelines, especially for content generation or critical reasoning tasks.</li>
                         </ul>
                     </div>
 
                     <div class="case-study">
                         <h4>Case Study:</h4>
-                        <p>A marketing agency used GenAI to create personalized content across multiple channels, increasing engagement by 40% while reducing content creation time by 60%.</p>
+                        <p>A content marketing agency leveraged GenAI to rapidly draft personalized ad copy and social media posts, increasing campaign launch speed by 50% and enabling A/B testing at scale, significantly boosting engagement and conversion rates.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screen result-screen" id="result-genai-complex">
+                <div class="content-card result-card">
+                    <div class="result-icon">🧠</div>
+                    <h2>Generative AI for Complex Problems</h2>
+                    <p class="result-description">Your broad and complex problem is well-suited for Generative AI, which can handle nuanced inputs and produce creative, adaptable outputs.</p>
+                    
+                    <div class="recommendation-box">
+                        <h3>Recommended Actions:</h3>
+                        <ul>
+                            <li>Investigate advanced GenAI models capable of understanding context and generating diverse solutions.</li>
+                            <li>**Start with a strategic pilot project** focusing on a well-defined sub-problem to demonstrate GenAI's potential.</li>
+                            <li>Emphasize data quality for training/fine-tuning and robust evaluation metrics for generated outputs.</li>
+                            <li>Develop internal expertise in prompt engineering and responsible AI practices for complex applications.</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-study">
+                        <h4>Case Study:</h4>
+                        <p>A strategic consulting firm used GenAI to synthesize vast amounts of market research and generate novel business strategies, significantly accelerating their analysis phase and providing clients with more innovative, data-driven recommendations.</p>
                     </div>
                 </div>
             </div>
@@ -321,22 +369,22 @@
             <div class="screen result-screen" id="result-automation">
                 <div class="content-card result-card">
                     <div class="result-icon">🤖</div>
-                    <h2>AI Automation Recommended</h2>
-                    <p class="result-description">Implement AI for full task automation to maximize efficiency.</p>
+                    <h2>AI for Full Automation</h2>
+                    <p class="result-description">Your problem is ideal for AI-driven full automation, maximizing efficiency and reducing manual effort.</p>
                     
                     <div class="recommendation-box">
                         <h3>Recommended Actions:</h3>
                         <ul>
-                            <li>Design end-to-end automated workflows</li>
-                            <li>Implement robust error handling and monitoring</li>
-                            <li>Plan for edge cases and fallback procedures</li>
-                            <li>Ensure scalability and performance optimization</li>
+                            <li>Design end-to-end automated workflows, integrating AI components seamlessly into existing systems.</li>
+                            <li>**Implement a pilot project** to test the automation pipeline in a controlled environment.</li>
+                            <li>Develop robust error handling, monitoring, and fallback procedures for automated processes.</li>
+                            <li>Ensure scalability and performance optimization to handle increasing volumes of tasks.</li>
                         </ul>
                     </div>
 
                     <div class="case-study">
                         <h4>Case Study:</h4>
-                        <p>A financial services company automated loan application processing with AI, reducing processing time from days to minutes while maintaining 99.5% accuracy.</p>
+                        <p>A financial services company automated loan application processing with AI, reducing processing time from days to minutes while maintaining 99.5% accuracy and freeing up human agents for more complex customer interactions.</p>
                     </div>
                 </div>
             </div>
@@ -344,22 +392,22 @@
             <div class="screen result-screen" id="result-augmentation">
                 <div class="content-card result-card">
                     <div class="result-icon">🤝</div>
-                    <h2>AI Augmentation Recommended</h2>
-                    <p class="result-description">Use AI to enhance human capabilities while maintaining oversight and control.</p>
+                    <h2>AI for Human Augmentation</h2>
+                    <p class="result-description">Use AI to enhance human capabilities, providing intelligent assistance and improving decision-making while maintaining human oversight.</p>
                     
                     <div class="recommendation-box">
                         <h3>Recommended Actions:</h3>
                         <ul>
-                            <li>Design human-AI collaboration workflows</li>
-                            <li>Provide AI literacy training for users</li>
-                            <li>Implement explainable AI features</li>
-                            <li>Establish clear human override protocols</li>
+                            <li>Design human-AI collaboration workflows that leverage AI for insights and humans for judgment.</li>
+                            <li>**Conduct a pilot project** focusing on a specific area where AI can significantly enhance human performance.</li>
+                            <li>Provide comprehensive AI literacy training for users to maximize adoption and effective use.</li>
+                            <li>Implement explainable AI (XAI) features where human understanding of AI's reasoning is critical.</li>
                         </ul>
                     </div>
 
                     <div class="case-study">
                         <h4>Case Study:</h4>
-                        <p>A hospital implemented AI-assisted radiology, where AI highlights potential issues for radiologists to review, improving diagnostic accuracy by 25% while reducing review time.</p>
+                        <p>A hospital implemented AI-assisted radiology, where AI highlights potential anomalies in scans for radiologists to review. This improved diagnostic accuracy by 25% and reduced review time, allowing human experts to focus on critical cases.</p>
                     </div>
                 </div>
             </div>
@@ -368,22 +416,23 @@
                 <div class="content-card result-card">
                     <div class="result-icon">⚠️</div>
                     <h2>Address Concerns First</h2>
-                    <p class="result-description">Ethical, privacy, or transparency concerns must be resolved before AI implementation.</p>
+                    <p class="result-description">Significant ethical, privacy, or transparency concerns must be thoroughly addressed and mitigated before AI implementation.</p>
                     
                     <div class="recommendation-box">
                         <h3>Recommended Actions:</h3>
                         <ul>
-                            <li>Conduct thorough risk assessment and mitigation planning</li>
-                            <li>Develop AI governance and ethics frameworks</li>
-                            <li>Ensure regulatory compliance and legal review</li>
-                            <li>Implement bias testing and fairness measures</li>
-                            <li>Create transparency and explainability protocols</li>
+                            <li>Conduct a comprehensive risk assessment and develop a robust mitigation plan.</li>
+                            <li>Establish clear AI governance and ethical frameworks tailored to your organization.</li>
+                            <li>Ensure full regulatory compliance and seek legal review for sensitive use cases.</li>
+                            <li>Implement bias detection, fairness measures, and continuous monitoring for AI systems.</li>
+                            <li>Develop transparency and explainability protocols to build trust and accountability.</li>
+                            <li>**Revisit this assessment** once these foundational concerns have been adequately addressed.</li>
                         </ul>
                     </div>
 
                     <div class="case-study">
                         <h4>Case Study:</h4>
-                        <p>A hiring platform delayed AI implementation to address bias concerns, ultimately creating a more fair and legally compliant system that improved diversity hiring by 30%.</p>
+                        <p>A hiring platform delayed AI implementation to proactively address potential bias in its algorithms. By investing in fairness testing and diverse data sets, they created a more equitable and legally compliant system, ultimately improving diversity hiring by 30%.</p>
                     </div>
                 </div>
             </div>
@@ -392,22 +441,22 @@
                 <div class="content-card result-card">
                     <div class="result-icon">🏗️</div>
                     <h2>Build Organizational Readiness</h2>
-                    <p class="result-description">Develop necessary infrastructure and capabilities before implementing AI.</p>
+                    <p class="result-description">Developing the necessary data infrastructure, skilled personnel, and leadership support is crucial before successful AI implementation.</p>
                     
                     <div class="recommendation-box">
                         <h3>Recommended Actions:</h3>
                         <ul>
-                            <li>Invest in data infrastructure and governance</li>
-                            <li>Hire or train AI/ML talent</li>
-                            <li>Establish data science and analytics capabilities</li>
-                            <li>Create change management and training programs</li>
-                            <li>Start with smaller pilot projects to build experience</li>
+                            <li>Prioritize investment in data infrastructure, data governance, and data quality initiatives.</li>
+                            <li>Develop or acquire AI/ML talent through hiring, training, or strategic partnerships.</li>
+                            <li>Foster a data-driven culture and ensure strong executive sponsorship for AI initiatives.</li>
+                            <li>Start with smaller, manageable pilot projects to build internal experience and demonstrate early wins.</li>
+                            <li>**Revisit this assessment** once your organization has significantly advanced its readiness.</li>
                         </ul>
                     </div>
 
                     <div class="case-study">
                         <h4>Case Study:</h4>
-                        <p>A retail company spent 18 months building data infrastructure and training teams before implementing AI for demand forecasting, resulting in a highly successful deployment with 20% inventory cost reduction.</p>
+                        <p>A retail company spent 18 months systematically building its data infrastructure and upskilling its teams before implementing AI for demand forecasting. This foundational work led to a highly successful deployment, resulting in a 20% reduction in inventory costs and improved supply chain efficiency.</p>
                     </div>
                 </div>
             </div>
@@ -416,22 +465,22 @@
                 <div class="content-card result-card">
                     <div class="result-icon">✅</div>
                     <h2>AI Implementation Recommended</h2>
-                    <p class="result-description">AI is likely to add significant value. Proceed with implementation planning.</p>
+                    <p class="result-description">Your problem is well-suited for AI, and your organization appears ready. Proceed with detailed implementation planning.</p>
                     
                     <div class="recommendation-box">
                         <h3>Recommended Actions:</h3>
                         <ul>
-                            <li>Develop detailed implementation roadmap</li>
-                            <li>Define success metrics and KPIs</li>
-                            <li>Plan pilot project with clear scope</li>
-                            <li>Establish monitoring and evaluation processes</li>
-                            <li>Prepare for scaling and continuous improvement</li>
+                            <li>Develop a detailed AI implementation roadmap, defining clear phases, milestones, and responsibilities.</li>
+                            <li>Define specific success metrics (KPIs) and a robust methodology for measuring AI impact.</li>
+                            <li>**Plan a focused pilot project** with a clear scope to validate assumptions and gather real-world data.</li>
+                            <li>Establish continuous monitoring, evaluation, and iteration processes for your AI solution.</li>
+                            <li>Prepare for scaling the solution across the organization and integrating it into core operations.</li>
                         </ul>
                     </div>
 
                     <div class="case-study">
                         <h4>Case Study:</h4>
-                        <p>An e-commerce company successfully implemented AI-powered recommendation systems, increasing sales by 35% and customer satisfaction scores by 25% within six months.</p>
+                        <p>An e-commerce company successfully implemented AI-powered recommendation systems, leading to a 35% increase in sales and a 25% improvement in customer satisfaction scores within six months, demonstrating significant business value.</p>
                     </div>
                 </div>
             </div>
@@ -450,4 +499,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
